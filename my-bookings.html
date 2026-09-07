@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตั๋วการจองของฉัน - SONGKHLA PUB (HTML Version)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { light: '#f7e096', DEFAULT: '#d4af37', dark: '#997819' },
+                        night: { 900: '#090a0f', 800: '#13151d', 700: '#1b1d28', 600: '#262938' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --gold-gradient: linear-gradient(135deg, #f7e096 0%, #d4af37 50%, #997819 100%); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Kanit', sans-serif; background-color: #090a0f; color: #e5e7eb; min-height: 100vh; }
+        .text-gold-gradient { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-gold { background: var(--gold-gradient); color: #0b0c10; font-weight: 600; transition: all 0.3s ease; border: none; }
+        .btn-gold:hover { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); transform: translateY(-2px); filter: brightness(1.1); }
+        .glass-card { background: rgba(19, 21, 29, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 1rem; }
+    </style>
+</head>
+<body class="bg-night-900 text-gray-200 flex flex-col min-h-screen">
+
+<!-- 20:00 Rule Top Warning Banner -->
+<div class="bg-gradient-to-r from-red-950 via-black to-red-950 border-b border-red-800/40 text-xs py-2 px-4 text-center text-red-200 flex items-center justify-center gap-2">
+    <i class="fa-solid fa-clock text-yellow-400"></i>
+    <span><strong>กติกาการจอง:</strong> ต้องเช็คอินที่ร้านก่อน <strong>20:00 น.</strong> หากเกินเวลาระบบจะตัดสิทธิ์ว่าไม่ได้มาตามเวลา (No-Show)</span>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-[#090a0f]/95 backdrop-blur-md border-b border-[#d4af37]/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-yellow-500/20 to-yellow-900/40 flex items-center justify-center border border-[#d4af37]/50 shadow-lg">
+                    <i class="fa-solid fa-champagne-glasses text-[#d4af37] text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-xl font-extrabold tracking-wider text-gold-gradient">SONGKHLA PUB</div>
+                    <div class="text-[10px] text-gray-400 tracking-widest uppercase">VIP E-Ticket • บัตรผ่านเข้างาน</div>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="index.html" class="text-gray-300 hover:text-yellow-400 transition-colors">หน้าแรก</a>
+                <a href="booking.html" class="text-gray-300 hover:text-yellow-400 transition-colors">จองโต๊ะ & ผังร้าน</a>
+                <a href="my-bookings.html" class="text-yellow-400 border-b-2 border-yellow-400 pb-1">ตั๋วการจองของฉัน</a>
+                <a href="profile.html" class="text-gray-300 hover:text-yellow-400 transition-colors">แต้ม VIP / โปรไฟล์</a>
+                <a href="contact.html" class="text-gray-300 hover:text-yellow-400 transition-colors">แชทติดต่อร้าน</a>
+                <a href="admin.html" class="text-amber-300 hover:text-white px-3 py-1 rounded-lg bg-yellow-950/60 border border-yellow-500/40 text-xs font-bold transition-all">
+                    👑 หลังบ้าน Admin
+                </a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="profile.html" class="px-3 py-1.5 rounded-xl bg-night-800 border border-yellow-500/40 text-xs font-semibold text-yellow-400 flex items-center gap-2">
+                    <i class="fa-solid fa-crown text-yellow-400"></i> user@gmail.com
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 py-10 space-y-8 flex-1">
+
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-3xl font-black text-white">ตั๋วเข้าผับ & บัตรจองโต๊ะ (VIP E-Ticket)</h1>
+            <p class="text-xs text-gray-400 mt-1">ยื่น QR Code นี้ให้พนักงานที่หน้าร้านเพื่อเช็คอินก่อนเวลา 20:00 น.</p>
+        </div>
+        <a href="booking.html" class="btn-gold px-4 py-2 rounded-xl text-xs font-bold shadow flex items-center gap-1.5 self-start">
+            <i class="fa-solid fa-plus"></i> จองโต๊ะเพิ่ม
+        </a>
+    </div>
+
+    <!-- Active E-Ticket Card -->
+    <div class="glass-card rounded-3xl overflow-hidden border-2 border-[#d4af37]/60 shadow-2xl relative">
+        <!-- Top Golden Header Strip -->
+        <div class="bg-gradient-to-r from-yellow-700 via-yellow-500 to-amber-600 p-4 text-black flex items-center justify-between font-bold text-xs tracking-wider uppercase shadow">
+            <span>✨ VIP OFFICIAL PASS • SONGKHLA NIGHTLIFE</span>
+            <span class="bg-black text-yellow-400 px-3 py-0.5 rounded-full text-[10px]">ยืนยันการจองแล้ว</span>
+        </div>
+
+        <div class="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+            
+            <!-- QR Code Section -->
+            <div class="text-center space-y-3 md:border-r md:border-gray-800 md:pr-6">
+                <div class="bg-white p-3 rounded-2xl max-w-[180px] mx-auto shadow-xl">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=CHECKIN-SK-PUB-VIP01" alt="Check-in QR" class="w-full h-auto rounded">
+                </div>
+                <div class="font-mono text-xs font-bold text-yellow-400 tracking-widest">CODE: #VIP-NK-9872</div>
+                <div class="text-[10px] text-gray-400">สแกนที่หน้าร้านเพื่อเช็คอิน</div>
+            </div>
+
+            <!-- Booking Details Section -->
+            <div class="md:col-span-2 space-y-4">
+                <div>
+                    <div class="text-xs text-yellow-400 font-semibold uppercase tracking-widest">Nockout Pub & Music Bar</div>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white">โต๊ะ VIP-01 (VIP Lounge)</h2>
+                    <div class="text-xs text-gray-400">6 ที่นั่ง • หน้าเวทีดนตรีสด</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="p-3 rounded-xl bg-night-900 border border-gray-800">
+                        <div class="text-gray-400">วันที่จอง:</div>
+                        <div class="font-bold text-white text-sm">คืนนี้ (08 ก.ย. 2026)</div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-night-900 border border-gray-800">
+                        <div class="text-gray-400">เวลานัดหมายถึงร้าน:</div>
+                        <div class="font-bold text-yellow-400 text-sm">19:00 น.</div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-night-900 border border-gray-800 col-span-2">
+                        <div class="text-gray-400">แพ็กเกจเปิดโต๊ะ:</div>
+                        <div class="font-bold text-amber-300">เบียร์ช้าง 3 ขวด + น้ำแข็งถังใหญ่ (199.-)</div>
+                    </div>
+                </div>
+
+                <!-- 20:00 Live Countdown Timer -->
+                <div class="p-4 rounded-2xl bg-gradient-to-r from-red-950/80 via-black to-red-950/80 border border-red-500/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-stopwatch text-red-400 text-2xl animate-pulse"></i>
+                        <div>
+                            <div class="text-xs text-red-200 font-bold">นับถอยหลังเส้นตายตัดสิทธิ์ (20:00 น.)</div>
+                            <div class="text-[11px] text-gray-400">หากไม่มาเช็คอิน โต๊ะจะถูกยกเลิกทันที</div>
+                        </div>
+                    </div>
+                    <div class="font-mono text-xl sm:text-2xl font-black text-yellow-400 tracking-wider text-right" id="countdownClock">
+                        02:45:18
+                    </div>
+                </div>
+
+                <!-- Action Buttons: Share to LINE & Cancel Booking -->
+                <div class="flex flex-wrap items-center gap-3 pt-2">
+                    <button onclick="shareToLine()" class="flex-1 px-4 py-2.5 rounded-xl bg-[#06c755] hover:bg-[#05b34c] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
+                        <i class="fa-brands fa-line text-base"></i> แชร์ตั๋วให้เพื่อนในแก๊ง (LINE)
+                    </button>
+                    <button onclick="cancelBookingMock()" class="px-4 py-2.5 rounded-xl bg-night-900 border border-red-500/40 text-red-400 hover:bg-red-950/40 font-semibold text-xs transition-all">
+                        <i class="fa-solid fa-ban mr-1"></i> ยกเลิกการจอง
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<footer class="bg-[#07080b] border-t border-[#d4af37]/20 py-6 text-center text-xs text-gray-500 mt-auto">
+    <p>© 2026 SONGKHLA PUB & BAR RESERVATION • HTML Evaluation Package</p>
+</footer>
+
+<script>
+    // Live Countdown Timer to 20:00
+    function updateCountdown() {
+        const now = new Date();
+        const cutoff = new Date();
+        cutoff.setHours(20, 0, 0, 0);
+
+        let diff = cutoff - now;
+        if (diff < 0) {
+            document.getElementById('countdownClock').innerHTML = '<span class="text-red-500">หมดเวลา (No-Show)</span>';
+            return;
+        }
+
+        const hrs = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
+        const mins = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+        const secs = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+
+        document.getElementById('countdownClock').textContent = `${hrs}:${mins}:${secs}`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function shareToLine() {
+        alert('📲 คัดลอกข้อความแชร์ไปยัง LINE สำเร็จ!\n"เจอกันคืนนี้ที่ Nockout Pub โต๊ะ VIP-01 นัด 19:00 น. ก่อนตัดสิทธิ์ 20:00 น. นะพวกเรา!"');
+    }
+
+    function cancelBookingMock() {
+        if(confirm('ต้องการยกเลิกการจองโต๊ะ VIP-01 ใช่หรือไม่? โต๊ะจะถูกปล่อยว่างให้ลูกค้าท่านอื่นทันที')) {
+            alert('✓ ยกเลิกการจองเรียบร้อย โต๊ะ VIP-01 ถูกปล่อยคืนสู่ผังแล้ว');
+            window.location.href = 'booking.html';
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จองโต๊ะ & ผังที่นั่ง - SONGKHLA PUB (HTML Version)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { light: '#f7e096', DEFAULT: '#d4af37', dark: '#997819' },
+                        night: { 900: '#090a0f', 800: '#13151d', 700: '#1b1d28', 600: '#262938' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --gold-gradient: linear-gradient(135deg, #f7e096 0%, #d4af37 50%, #997819 100%); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Kanit', sans-serif; background-color: #090a0f; color: #e5e7eb; min-height: 100vh; }
+        .text-gold-gradient { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-gold { background: var(--gold-gradient); color: #0b0c10; font-weight: 600; transition: all 0.3s ease; border: none; }
+        .btn-gold:hover { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); transform: translateY(-2px); filter: brightness(1.1); }
+        .glass-card { background: rgba(19, 21, 29, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 1rem; }
+        .seat-box { border-radius: 0.75rem; padding: 1.25rem 0.75rem; text-align: center; transition: all 0.25s ease; cursor: pointer; user-select: none; }
+        .seat-available { background: #13151d; border: 1.5px solid rgba(212, 175, 55, 0.4); color: #f3e5ab; }
+        .seat-available:hover { border-color: #d4af37; transform: translateY(-3px); box-shadow: 0 0 15px rgba(212, 175, 55, 0.35); }
+        .seat-booked { background: #1a0f12; border: 1.5px solid rgba(239, 68, 68, 0.4); color: #f87171; cursor: not-allowed; opacity: 0.6; }
+        .seat-selected { background: rgba(212, 175, 55, 0.2) !important; border: 2px solid #d4af37 !important; transform: scale(1.05); box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
+    </style>
+</head>
+<body class="bg-night-900 text-gray-200 flex flex-col min-h-screen">
+
+<!-- 20:00 Rule Top Warning Banner -->
+<div class="bg-gradient-to-r from-red-950 via-black to-red-950 border-b border-red-800/40 text-xs py-2 px-4 text-center text-red-200 flex items-center justify-center gap-2">
+    <i class="fa-solid fa-clock text-yellow-400"></i>
+    <span><strong>กติกาการจอง:</strong> ต้องเช็คอินที่ร้านก่อน <strong>20:00 น.</strong> หากเกินเวลาระบบจะตัดสิทธิ์ว่าไม่ได้มาตามเวลา (No-Show)</span>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-[#090a0f]/95 backdrop-blur-md border-b border-[#d4af37]/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-yellow-500/20 to-yellow-900/40 flex items-center justify-center border border-[#d4af37]/50 shadow-lg">
+                    <i class="fa-solid fa-champagne-glasses text-[#d4af37] text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-xl font-extrabold tracking-wider text-gold-gradient">SONGKHLA PUB</div>
+                    <div class="text-[10px] text-gray-400 tracking-widest uppercase">Table Reservation • ผังโต๊ะ & จอง</div>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="index.html" class="text-gray-300 hover:text-yellow-400 transition-colors">หน้าแรก</a>
+                <a href="booking.html" class="text-yellow-400 border-b-2 border-yellow-400 pb-1">จองโต๊ะ & ผังร้าน</a>
+                <a href="my-bookings.html" class="text-gray-300 hover:text-yellow-400 transition-colors">ตั๋วการจองของฉัน</a>
+                <a href="profile.html" class="text-gray-300 hover:text-yellow-400 transition-colors">แต้ม VIP / โปรไฟล์</a>
+                <a href="contact.html" class="text-gray-300 hover:text-yellow-400 transition-colors">แชทติดต่อร้าน</a>
+                <a href="admin.html" class="text-amber-300 hover:text-white px-3 py-1 rounded-lg bg-yellow-950/60 border border-yellow-500/40 text-xs font-bold transition-all">
+                    👑 หลังบ้าน Admin
+                </a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="login.html" class="btn-gold px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-lg">
+                    <i class="fa-solid fa-user"></i> เข้าสู่ระบบ
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-1">
+
+    <!-- Store Switcher Tabs -->
+    <div class="flex flex-wrap items-center justify-between gap-4 glass-card p-4">
+        <div>
+            <span class="text-xs text-yellow-400 font-semibold uppercase tracking-widest">เลือกร้านที่จะจอง:</span>
+            <h1 class="text-2xl font-black text-white" id="barDisplayName">Nockout Pub & Music Bar (สงขลา)</h1>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="switchBar('Nockout Pub & Music Bar')" id="btnBarNockout" class="btn-gold px-4 py-2 rounded-xl text-xs font-bold shadow">
+                🍻 Nockout Pub
+            </button>
+            <button onclick="switchBar('Fullmoon Club Songkhla')" id="btnBarFullmoon" class="px-4 py-2 rounded-xl text-xs font-semibold bg-night-800 border border-gray-700 hover:border-yellow-500 text-gray-300 transition-all">
+                🌙 Fullmoon Club
+            </button>
+        </div>
+    </div>
+
+    <!-- 2 Column Layout: Seating Map & Booking Form -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Seating Map Column (2 Cols) -->
+        <div class="lg:col-span-2 glass-card p-6 sm:p-8 space-y-6">
+            <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot text-yellow-400"></i> ผังโต๊ะเสมือนจริง (Interactive Map)
+                    </h2>
+                    <p class="text-xs text-gray-400 mt-1">คลิกเลือกโต๊ะสีทองที่คุณต้องการนั่ง</p>
+                </div>
+                <div class="flex items-center gap-3 text-xs font-medium">
+                    <span class="flex items-center gap-1.5 text-yellow-400"><span class="w-3.5 h-3.5 rounded bg-night-800 border border-yellow-500"></span> ว่าง</span>
+                    <span class="flex items-center gap-1.5 text-red-400"><span class="w-3.5 h-3.5 rounded bg-red-950/80 border border-red-500"></span> ติดจอง</span>
+                    <span class="flex items-center gap-1.5 text-amber-300"><span class="w-3.5 h-3.5 rounded bg-yellow-500/40 border-2 border-yellow-400"></span> ที่เลือก</span>
+                </div>
+            </div>
+
+            <!-- Stage Banner -->
+            <div class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-950/60 via-yellow-950/40 to-purple-950/60 border border-[#d4af37]/30 text-center text-xs text-yellow-400 tracking-widest font-bold">
+                🎤 STAGE & DJ BOOTH (เวทีดนตรีสดและดีเจ)
+            </div>
+
+            <!-- Seating Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4" id="tableGrid">
+                <!-- Zone VIP -->
+                <div class="seat-box seat-available" onclick="selectTable('VIP-01', 'VIP Lounge (หน้าบาร์)', 6, 500)">
+                    <div class="text-xs text-gray-400">VIP</div>
+                    <div class="font-bold text-base text-yellow-400">VIP-01</div>
+                    <div class="text-[11px] text-gray-300 mt-1">6 ที่นั่ง</div>
+                    <div class="text-[10px] text-green-400 mt-0.5">● ว่าง</div>
+                </div>
+
+                <div class="seat-box seat-booked">
+                    <div class="text-xs text-gray-500">VIP</div>
+                    <div class="font-bold text-base text-red-400">VIP-02</div>
+                    <div class="text-[11px] text-gray-500 mt-1">6 ที่นั่ง</div>
+                    <div class="text-[10px] text-red-400 mt-0.5">✕ ติดจอง</div>
+                </div>
+
+                <div class="seat-box seat-available" onclick="selectTable('VIP-03', 'VIP Lounge (โซฟาหรู)', 8, 500)">
+                    <div class="text-xs text-gray-400">VIP</div>
+                    <div class="font-bold text-base text-yellow-400">VIP-03</div>
+                    <div class="text-[11px] text-gray-300 mt-1">8 ที่นั่ง</div>
+                    <div class="text-[10px] text-green-400 mt-0.5">● ว่าง</div>
+                </div>
+
+                <div class="seat-box seat-available" onclick="selectTable('VIP-04', 'VIP Lounge (โซฟาหรู)', 8, 500)">
+                    <div class="text-xs text-gray-400">VIP</div>
+                    <div class="font-bold text-base text-yellow-400">VIP-04</div>
+                    <div class="text-[11px] text-gray-300 mt-1">8 ที่นั่ง</div>
+                    <div class="text-[10px] text-green-400 mt-0.5">● ว่าง</div>
+                </div>
+
+                <!-- Zone Stage -->
+                <div class="seat-box seat-available" onclick="selectTable('S-01', 'หน้าเวที (ติดขอบเวที)', 4, 300)">
+                    <div class="text-xs text-gray-400">STAGE</div>
+                    <div class="font-bold text-base text-yellow-400">S-01</div>
+                    <div class="text-[11px] text-gray-300 mt-1">4 ที่นั่ง</div>
+                    <div class="text-[10px] text-green-400 mt-0.5">● ว่าง</div>
+                </div>
+
+                <div class="seat-box seat-booked">
+                    <div class="text-xs text-gray-500">STAGE</div>
+                    <div class="font-bold text-base text-red-400">S-02</div>
+                    <div class="text-[11px] text-gray-500 mt-1">4 ที่นั่ง</div>
+                    <div class="text-[10px] text-red-400 mt-0.5">✕ ติดจอง</div>
+                </div>
+
+                <div class="seat-box seat-available" onclick="selectTable('S-03', 'หน้าเวที (ติดขอบเวที)', 4, 300)">
+                    <div class="text-xs text-gray-400">STAGE</div>
+                    <div class="font-bold text-base text-yellow-400">S-03</div>
+                    <div class="text-[11px] text-gray-300 mt-1">4 ที่นั่ง</div>
+                    <div class="text-[10px] text-green-400 mt-0.5">● ว่าง</div>
+                </div>
+
+                <div class="seat-box seat-available" onclick="selectTable('S-04', 'หน้าเวที (ติดขอบเวที)', 4, 300)">
+                    <div class="text-xs text-gray-400">STAGE</div>
+                    <div class="font-bold text-base text-yellow-400">S-04</div>
+                    <div class="text-[11px] text-gray-300 mt-1">4 ที่นั่ง</div>
+                    <div class="text-[10px] text-green-400 mt-0.5">● ว่าง</div>
+                </div>
+
+                <!-- Zone Air -->
+                <div class="seat-box seat-booked">
+                    <div class="text-xs text-gray-500">AIR</div>
+                    <div class="font-bold text-base text-red-400">A-01</div>
+                    <div class="text-[11px] text-gray-500 mt-1">4 ที่นั่ง</div>
+                    <div class="text-[10px] text-red-400 mt-0.5">✕ ติดจอง</div>
+                </div>
+
+                <div class="seat-box seat-available" onclick="selectTable('A-02', 'โซนแอร์เย็นฉ่ำ', 4, 200)">
+                    <div class="text-xs text-gray-400">AIR</div>
+                    <div class="font-bold text-base text-yellow-400">A-02</div>
+                    <div class="text-[11px] text-gray-300 mt-1">4 ที่นั่ง</div>
+                    <div class="text-[10px] text-green-400 mt-0.5">● ว่าง</div>
+                </div>
+
+                <div class="seat-box seat-available" onclick="selectTable('A-03', 'โซนแอร์เย็นฉ่ำ', 4, 200)">
+                    <div class="text-xs text-gray-400">AIR</div>
+                    <div class="font-bold text-base text-yellow-400">A-03</div>
+                    <div class="text-[11px] text-gray-300 mt-1">4 ที่นั่ง</div>
+                    <div class="text-[10px] text-green-400 mt-0.5">● ว่าง</div>
+                </div>
+
+                <div class="seat-box seat-available" onclick="selectTable('A-04', 'โซนแอร์เย็นฉ่ำ', 4, 200)">
+                    <div class="text-xs text-gray-400">AIR</div>
+                    <div class="font-bold text-base text-yellow-400">A-04</div>
+                    <div class="text-[11px] text-gray-300 mt-1">4 ที่นั่ง</div>
+                    <div class="text-[10px] text-green-400 mt-0.5">● ว่าง</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking & Order Summary Form Column (1 Col) -->
+        <div class="glass-card p-6 space-y-6 flex flex-col justify-between">
+            <div class="space-y-4">
+                <h3 class="text-lg font-bold text-white border-b border-gray-800 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-receipt text-yellow-400"></i> รายละเอียดการจอง
+                </h3>
+
+                <!-- Selected Table Banner -->
+                <div class="p-3.5 rounded-xl bg-night-900 border border-yellow-500/40">
+                    <div class="text-xs text-gray-400">โต๊ะที่เลือก:</div>
+                    <div class="text-xl font-black text-yellow-400" id="summaryTable">ยังไม่ได้เลือกโต๊ะ</div>
+                    <div class="text-xs text-gray-300" id="summaryZone">กรุณาคลิกเลือกโต๊ะว่างจากผังทางซ้าย</div>
+                </div>
+
+                <!-- Arrival Time Selection (Strictly <= 20:00) -->
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1.5 flex items-center justify-between">
+                        <span><i class="fa-solid fa-clock text-yellow-400 mr-1"></i> เวลานัดหมายถึงร้าน:</span>
+                        <span class="text-red-400 text-[11px] font-bold">ไม่เกิน 20:00 น.</span>
+                    </label>
+                    <select id="timeSlot" onchange="updateSummary()" class="w-full bg-night-900 border border-gray-700 rounded-xl px-3 py-2.5 text-sm text-white focus:border-yellow-400 focus:outline-none">
+                        <option value="17:30">17:30 น. (ช่วงเปิดร้าน)</option>
+                        <option value="18:00">18:00 น. (หัวค่ำ สบายๆ)</option>
+                        <option value="18:30">18:30 น. (ช่วงดนตรีอะคูสติก)</option>
+                        <option value="19:00" selected>19:00 น. (ยอดฮิต ช่วงดนตรีสด)</option>
+                        <option value="19:30">19:30 น. (เตรียมตัวเต็มวง)</option>
+                        <option value="20:00">20:00 น. (รอบสุดท้าย - เส้นตาย Cutoff!)</option>
+                    </select>
+                </div>
+
+                <!-- Package Selection -->
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1.5">
+                        <i class="fa-solid fa-wine-bottle text-yellow-400 mr-1"></i> เลือกโปรโมชั่นเปิดโต๊ะ:
+                    </label>
+                    <div class="space-y-2">
+                        <label class="flex items-center justify-between p-3 rounded-xl bg-night-900 border border-gray-800 hover:border-yellow-500 cursor-pointer">
+                            <div class="flex items-center gap-2.5">
+                                <input type="radio" name="pkg" value="199" checked onchange="updateSummary()" class="accent-yellow-400">
+                                <div>
+                                    <div class="text-xs font-bold text-white">ช้าง 3 ขวด + น้ำแข็งใหญ่</div>
+                                    <div class="text-[10px] text-gray-400">+20 แต้มสะสม</div>
+                                </div>
+                            </div>
+                            <span class="text-sm font-bold text-yellow-400">199.-</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-3 rounded-xl bg-night-900 border border-gray-800 hover:border-yellow-500 cursor-pointer">
+                            <div class="flex items-center gap-2.5">
+                                <input type="radio" name="pkg" value="599" onchange="updateSummary()" class="accent-yellow-400">
+                                <div>
+                                    <div class="text-xs font-bold text-white">แสงโสม 1L + มิกเซอร์ 4 + น้ำแข็ง</div>
+                                    <div class="text-[10px] text-gray-400">+60 แต้มสะสม</div>
+                                </div>
+                            </div>
+                            <span class="text-sm font-bold text-yellow-400">599.-</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-3 rounded-xl bg-night-900 border border-gray-800 hover:border-yellow-500 cursor-pointer">
+                            <div class="flex items-center gap-2.5">
+                                <input type="radio" name="pkg" value="0" onchange="updateSummary()" class="accent-yellow-400">
+                                <div>
+                                    <div class="text-xs font-bold text-white">ไม่รับโปรโมชั่น (สั่งที่ร้าน)</div>
+                                    <div class="text-[10px] text-gray-400">มัดจำโต๊ะอย่างเดียว</div>
+                                </div>
+                            </div>
+                            <span class="text-sm font-bold text-gray-400">0.-</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Breakdown -->
+                <div class="pt-3 border-t border-gray-800 space-y-1.5 text-xs text-gray-300">
+                    <div class="flex justify-between">
+                        <span>ค่ามัดจำโต๊ะ:</span>
+                        <span id="depPrice">300.-</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>โปรโมชั่นเปิดโต๊ะ:</span>
+                        <span id="pkgPrice">199.-</span>
+                    </div>
+                    <div class="flex justify-between text-base font-black text-white pt-2 border-t border-gray-800">
+                        <span>ยอดชำระทั้งหมด:</span>
+                        <span class="text-yellow-400" id="totalPrice">499.-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Submit Button -->
+            <button onclick="openPaymentModal()" id="btnBookSubmit" class="w-full btn-gold py-3.5 rounded-xl font-bold text-sm shadow-xl flex items-center justify-center gap-2">
+                <i class="fa-solid fa-qrcode"></i> ชำระเงิน PromptPay ทันที
+            </button>
+        </div>
+
+    </div>
+
+</main>
+
+<!-- PromptPay Payment Modal -->
+<div id="paymentModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="glass-card max-w-md w-full p-6 space-y-5 border border-yellow-500/50 relative animate-fadeIn">
+        <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+            <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+
+        <div class="text-center space-y-1">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-900 to-indigo-700 flex items-center justify-center mx-auto text-white text-xl shadow-lg">
+                <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <h3 class="text-xl font-black text-white">PromptPay QR Code</h3>
+            <p class="text-xs text-gray-400">สแกนชำระเงินผ่าน Mobile Banking ทุกธนาคาร</p>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl text-center shadow-inner max-w-[220px] mx-auto">
+            <!-- Simulated PromptPay QR -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PROMPTPAY-SONGKHLA-PUB-MOCK" alt="PromptPay QR" class="w-full h-auto mx-auto rounded">
+            <div class="text-[10px] text-gray-600 font-bold mt-2">พร้อมเพย์: 074-321-9999</div>
+        </div>
+
+        <div class="text-center">
+            <div class="text-xs text-gray-400">ยอดเงินที่ต้องชำระ:</div>
+            <div class="text-3xl font-black text-yellow-400" id="modalTotalPay">499.-</div>
+        </div>
+
+        <!-- Simulated Slip Upload -->
+        <div class="border border-dashed border-gray-700 rounded-xl p-3 text-center bg-night-900">
+            <input type="file" id="slipInput" onchange="previewSlip(event)" class="hidden">
+            <label for="slipInput" class="cursor-pointer text-xs text-gray-300 block">
+                <i class="fa-solid fa-cloud-arrow-up text-yellow-400 text-lg mb-1 block"></i>
+                <span id="slipText">คลิกเพื่อแนบสลิปโอนเงิน (จำลอง)</span>
+            </label>
+        </div>
+
+        <button onclick="confirmBooking()" class="w-full btn-gold py-3 rounded-xl font-bold text-sm shadow-xl">
+            ยืนยันการชำระเงิน & รับตั๋ว VIP
+        </button>
+    </div>
+</div>
+
+<footer class="bg-[#07080b] border-t border-[#d4af37]/20 py-6 text-center text-xs text-gray-500 mt-auto">
+    <p>© 2026 SONGKHLA PUB & BAR RESERVATION • HTML Evaluation Package</p>
+</footer>
+
+<script>
+    let selectedTable = 'VIP-01';
+    let selectedZone = 'VIP Lounge (หน้าบาร์)';
+    let deposit = 500;
+
+    function selectTable(num, zone, seats, dep) {
+        document.querySelectorAll('.seat-box').forEach(b => b.classList.remove('seat-selected'));
+        event.currentTarget.classList.add('seat-selected');
+        selectedTable = num;
+        selectedZone = `${zone} (${seats} ที่นั่ง)`;
+        deposit = dep;
+        updateSummary();
+    }
+
+    function switchBar(name) {
+        document.getElementById('barDisplayName').textContent = name + ' (สงขลา)';
+        if(name.includes('Nockout')) {
+            document.getElementById('btnBarNockout').className = 'btn-gold px-4 py-2 rounded-xl text-xs font-bold shadow';
+            document.getElementById('btnBarFullmoon').className = 'px-4 py-2 rounded-xl text-xs font-semibold bg-night-800 border border-gray-700 hover:border-yellow-500 text-gray-300 transition-all';
+        } else {
+            document.getElementById('btnBarFullmoon').className = 'btn-gold px-4 py-2 rounded-xl text-xs font-bold shadow';
+            document.getElementById('btnBarNockout').className = 'px-4 py-2 rounded-xl text-xs font-semibold bg-night-800 border border-gray-700 hover:border-yellow-500 text-gray-300 transition-all';
+        }
+    }
+
+    function updateSummary() {
+        document.getElementById('summaryTable').textContent = selectedTable;
+        document.getElementById('summaryZone').textContent = selectedZone;
+        document.getElementById('depPrice').textContent = deposit + '.-';
+        
+        const pkgVal = parseInt(document.querySelector('input[name="pkg"]:checked').value);
+        document.getElementById('pkgPrice').textContent = pkgVal + '.-';
+        const total = deposit + pkgVal;
+        document.getElementById('totalPrice').textContent = total + '.-';
+        document.getElementById('modalTotalPay').textContent = total + '.-';
+    }
+
+    function openPaymentModal() {
+        document.getElementById('paymentModal').classList.remove('hidden');
+    }
+    function closePaymentModal() {
+        document.getElementById('paymentModal').classList.add('hidden');
+    }
+    function previewSlip(e) {
+        if(e.target.files && e.target.files[0]) {
+            document.getElementById('slipText').textContent = '✓ แนบสลิปเรียบร้อย: ' + e.target.files[0].name;
+            document.getElementById('slipText').className = 'text-green-400 font-semibold';
+        }
+    }
+    function confirmBooking() {
+        alert('🎉 จองโต๊ะ ' + selectedTable + ' สำเร็จ! ระบบได้ตัดยอดชำระ และสร้างตั๋ว VIP ให้คุณแล้ว');
+        window.location.href = 'my-bookings.html';
+    }
+
+    // Initialize default selection
+    window.onload = function() {
+        const first = document.querySelector('.seat-available');
+        if(first) first.classList.add('seat-selected');
+        updateSummary();
+    };
+</script>
+</body>
+</html>

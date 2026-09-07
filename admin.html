@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบแอดมินหลังบ้าน - SONGKHLA PUB (HTML Version)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { light: '#f7e096', DEFAULT: '#d4af37', dark: '#997819' },
+                        night: { 900: '#090a0f', 800: '#13151d', 700: '#1b1d28', 600: '#262938' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --gold-gradient: linear-gradient(135deg, #f7e096 0%, #d4af37 50%, #997819 100%); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Kanit', sans-serif; background-color: #090a0f; color: #e5e7eb; min-height: 100vh; }
+        .text-gold-gradient { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-gold { background: var(--gold-gradient); color: #0b0c10; font-weight: 600; transition: all 0.3s ease; border: none; }
+        .btn-gold:hover { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); transform: translateY(-2px); filter: brightness(1.1); }
+        .glass-card { background: rgba(19, 21, 29, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 1rem; }
+    </style>
+</head>
+<body class="bg-night-900 text-gray-200 flex flex-col min-h-screen">
+
+<!-- Admin Top Bar -->
+<div class="bg-gradient-to-r from-amber-950 via-yellow-950 to-amber-950 border-b border-amber-600/40 text-xs py-2 px-4 text-center text-amber-200 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+        <i class="fa-solid fa-shield-halved text-yellow-400"></i>
+        <span><strong>แผงควบคุมระบบหลังบ้าน (Admin Backoffice):</strong> สิทธิ์ผู้ดูแลระบบสูงสุด</span>
+    </div>
+    <div class="font-mono text-[11px] text-yellow-400">
+        674295003@parichat.skru.ac.th
+    </div>
+</div>
+
+<!-- Navigation Header -->
+<header class="sticky top-0 z-50 bg-[#090a0f]/95 backdrop-blur-md border-b border-[#d4af37]/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="admin.html" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-yellow-500/20 to-yellow-900/40 flex items-center justify-center border border-[#d4af37]/50 shadow-lg">
+                    <i class="fa-solid fa-crown text-[#d4af37] text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-xl font-extrabold tracking-wider text-gold-gradient">SONGKHLA PUB ADMIN</div>
+                    <div class="text-[10px] text-gray-400 tracking-widest uppercase">ระบบจัดการโต๊ะ & คอนโซลแอดมิน</div>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="#tablesSec" class="text-yellow-400 font-bold">จัดผัง & สลับโต๊ะลูกค้า</a>
+                <a href="#bookingsSec" class="text-gray-300 hover:text-yellow-400 transition-colors">ตรวจสลิปการจอง</a>
+                <a href="#cutoffSec" class="text-gray-300 hover:text-yellow-400 transition-colors">ตัดรอบ 20:00 น.</a>
+                <a href="index.html" class="text-gray-400 hover:text-white text-xs px-3 py-1.5 rounded-lg border border-gray-700">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> กลับหน้าเว็บหลัก
+                </a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-1">
+
+    <!-- Metrics Cards Row -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="glass-card p-5 border-l-4 border-l-green-500 flex items-center justify-between">
+            <div>
+                <div class="text-xs text-gray-400">โต๊ะว่างพร้อมให้บริการ</div>
+                <div class="text-3xl font-black text-green-400 mt-1" id="statAvail">18 โต๊ะ</div>
+            </div>
+            <i class="fa-solid fa-chair text-green-500/30 text-4xl"></i>
+        </div>
+
+        <div class="glass-card p-5 border-l-4 border-l-yellow-500 flex items-center justify-between">
+            <div>
+                <div class="text-xs text-gray-400">โต๊ะที่ถูกจองแล้ว</div>
+                <div class="text-3xl font-black text-yellow-400 mt-1">6 โต๊ะ</div>
+            </div>
+            <i class="fa-solid fa-bookmark text-yellow-500/30 text-4xl"></i>
+        </div>
+
+        <div class="glass-card p-5 border-l-4 border-l-blue-500 flex items-center justify-between">
+            <div>
+                <div class="text-xs text-gray-400">ยอดเงินมัดจำคืนนี้</div>
+                <div class="text-3xl font-black text-blue-400 mt-1">3,594.-</div>
+            </div>
+            <i class="fa-solid fa-money-bill-wave text-blue-500/30 text-4xl"></i>
+        </div>
+
+        <div class="glass-card p-5 border-l-4 border-l-red-500 flex items-center justify-between">
+            <div>
+                <div class="text-xs text-gray-400">ตัดสิทธิ์ No-Show คืนนี้</div>
+                <div class="text-3xl font-black text-red-400 mt-1" id="statNoShow">0 โต๊ะ</div>
+            </div>
+            <i class="fa-solid fa-clock text-red-500/30 text-4xl"></i>
+        </div>
+    </div>
+
+    <!-- Seating Layout & Table Reassignment Section -->
+    <section id="tablesSec" class="glass-card p-6 sm:p-8 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-800 pb-4">
+            <div>
+                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-yellow-400"></i> จัดการผังโต๊ะ & สลับย้ายโต๊ะให้ลูกค้า
+                </h2>
+                <p class="text-xs text-gray-400 mt-1">แอดมินสามารถคลิกเปิด-ปิดสถานะโต๊ะ (ซ่อมบำรุง/พร้อมใช้) หรือย้ายโต๊ะให้ลูกค้าได้ตามต้องการ</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="mockReassign()" class="btn-gold px-4 py-2 rounded-xl text-xs font-bold shadow flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrows-rotate"></i> สลับโต๊ะลูกค้า (Reassign)
+                </button>
+            </div>
+        </div>
+
+        <!-- Table Management Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="adminTableGrid">
+            
+            <!-- Table 1: VIP-01 -->
+            <div class="p-4 rounded-2xl bg-night-900 border border-yellow-500/50 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-yellow-400">VIP-01 (VIP Lounge)</span>
+                    <span class="text-[10px] bg-red-950 text-red-400 border border-red-500/40 px-2 py-0.5 rounded-full font-bold">มีผู้จองแล้ว</span>
+                </div>
+                <div class="text-xs space-y-1 text-gray-300">
+                    <div>👤 ลูกค้า: <strong>คุณสมชาย (user@gmail.com)</strong></div>
+                    <div>🕒 นัดหมาย: <strong>19:00 น.</strong> | เบอร์: 089-765-4321</div>
+                    <div>🍾 แพ็กเกจ: เบียร์ช้าง 3 ขวด (199.-)</div>
+                </div>
+                <div class="pt-2 border-t border-gray-800 flex items-center justify-between gap-2">
+                    <button onclick="promptMoveTable('VIP-01', 'คุณสมชาย')" class="flex-1 py-1.5 bg-yellow-950/60 border border-yellow-500/40 text-yellow-300 hover:bg-yellow-500 hover:text-black rounded-lg text-xs font-semibold transition-all">
+                        ย้ายโต๊ะ
+                    </button>
+                    <button onclick="checkinCustomer('VIP-01')" class="flex-1 py-1.5 bg-green-950/60 border border-green-500/40 text-green-300 hover:bg-green-600 hover:text-white rounded-lg text-xs font-semibold transition-all">
+                        ✓ เช็คอินแล้ว
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table 2: VIP-02 -->
+            <div class="p-4 rounded-2xl bg-night-900 border border-gray-800 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-gray-300">VIP-02 (VIP Lounge)</span>
+                    <span class="text-[10px] bg-green-950 text-green-400 border border-green-500/40 px-2 py-0.5 rounded-full font-bold">ว่างพร้อมบริการ</span>
+                </div>
+                <div class="text-xs text-gray-400 py-3 text-center">
+                    (ยังไม่มีการจอง - 6 ที่นั่ง)
+                </div>
+                <div class="pt-2 border-t border-gray-800 flex items-center justify-between">
+                    <button onclick="toggleMaintenance('VIP-02', this)" class="w-full py-1.5 bg-gray-800 hover:bg-red-950/60 text-gray-400 hover:text-red-300 rounded-lg text-xs font-semibold transition-all">
+                        🛠️ ปิดปรับปรุงชั่วคราว
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table 3: S-01 -->
+            <div class="p-4 rounded-2xl bg-night-900 border border-yellow-500/50 space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-yellow-400">S-01 (หน้าเวที)</span>
+                    <span class="text-[10px] bg-red-950 text-red-400 border border-red-500/40 px-2 py-0.5 rounded-full font-bold">มีผู้จองแล้ว</span>
+                </div>
+                <div class="text-xs space-y-1 text-gray-300">
+                    <div>👤 ลูกค้า: <strong>แก๊งสายตื๊ด (sk_party@gmail.com)</strong></div>
+                    <div>🕒 นัดหมาย: <strong>18:30 น.</strong> | เบอร์: 081-234-5678</div>
+                    <div>🍾 แพ็กเกจ: แสงโสม 1 ลิตร (599.-)</div>
+                </div>
+                <div class="pt-2 border-t border-gray-800 flex items-center justify-between gap-2">
+                    <button onclick="promptMoveTable('S-01', 'แก๊งสายตื๊ด')" class="flex-1 py-1.5 bg-yellow-950/60 border border-yellow-500/40 text-yellow-300 hover:bg-yellow-500 hover:text-black rounded-lg text-xs font-semibold transition-all">
+                        ย้ายโต๊ะ
+                    </button>
+                    <button onclick="checkinCustomer('S-01')" class="flex-1 py-1.5 bg-green-950/60 border border-green-500/40 text-green-300 hover:bg-green-600 hover:text-white rounded-lg text-xs font-semibold transition-all">
+                        ✓ เช็คอินแล้ว
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Slip Verification & Bookings Table -->
+    <section id="bookingsSec" class="glass-card p-6 sm:p-8 space-y-4">
+        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-money-check text-yellow-400"></i> ตรวจสอบสลิปโอนเงิน PromptPay & สถานะการจอง
+        </h2>
+        
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-gray-300">
+                <thead class="bg-night-900 text-gray-400 uppercase text-[10px] border-b border-gray-800">
+                    <tr>
+                        <th class="py-3 px-4">รหัสจอง</th>
+                        <th class="py-3 px-4">ลูกค้า</th>
+                        <th class="py-3 px-4">โต๊ะ</th>
+                        <th class="py-3 px-4">เวลานัด</th>
+                        <th class="py-3 px-4">ยอดเงิน</th>
+                        <th class="py-3 px-4">สลิปโอนเงิน</th>
+                        <th class="py-3 px-4">การจัดการ</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-800">
+                    <tr>
+                        <td class="py-3 px-4 font-mono text-yellow-400 font-bold">#BK-9872</td>
+                        <td class="py-3 px-4">คุณสมชาย (user@gmail.com)</td>
+                        <td class="py-3 px-4 font-bold text-white">VIP-01</td>
+                        <td class="py-3 px-4 text-yellow-300">19:00 น.</td>
+                        <td class="py-3 px-4 font-bold text-green-400">499.-</td>
+                        <td class="py-3 px-4">
+                            <button onclick="viewSlipMock()" class="text-xs text-blue-400 hover:underline flex items-center gap-1">
+                                <i class="fa-solid fa-image"></i> ดูสลิป (แนบแล้ว)
+                            </button>
+                        </td>
+                        <td class="py-3 px-4">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-950 text-green-400 border border-green-500/40">
+                                อนุมัติแล้ว
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4 font-mono text-yellow-400 font-bold">#BK-9873</td>
+                        <td class="py-3 px-4">แก๊งสายตื๊ด (sk_party@gmail.com)</td>
+                        <td class="py-3 px-4 font-bold text-white">S-01</td>
+                        <td class="py-3 px-4 text-yellow-300">18:30 น.</td>
+                        <td class="py-3 px-4 font-bold text-green-400">899.-</td>
+                        <td class="py-3 px-4">
+                            <button onclick="viewSlipMock()" class="text-xs text-blue-400 hover:underline flex items-center gap-1">
+                                <i class="fa-solid fa-image"></i> ดูสลิป (แนบแล้ว)
+                            </button>
+                        </td>
+                        <td class="py-3 px-4">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-green-950 text-green-400 border border-green-500/40">
+                                อนุมัติแล้ว
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Manual 20:00 Cutoff Trigger Section -->
+    <section id="cutoffSec" class="glass-card p-6 sm:p-8 rounded-3xl border border-red-500/50 bg-gradient-to-r from-red-950/40 via-night-800 to-red-950/40 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="space-y-1">
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-red-400"></i> ตัดสิทธิ์โต๊ะที่เลยเวลา 20:00 น. (No-Show Trigger)
+            </h3>
+            <p class="text-xs text-gray-300">
+                ระบบจะตรวจสอบโต๊ะที่ยังไม่เช็คอิน หากเกิน 20:00 น. จะปรับสถานะเป็น No-Show และปล่อยโต๊ะว่างทันที
+            </p>
+        </div>
+        <button onclick="triggerCutoffMock()" class="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow-xl flex items-center gap-2 shrink-0 transition-all">
+            <i class="fa-solid fa-bolt"></i> รันระบบตัดสิทธิ์ทันที
+        </button>
+    </section>
+
+</main>
+
+<footer class="bg-[#07080b] border-t border-[#d4af37]/20 py-6 text-center text-xs text-gray-500 mt-auto">
+    <p>© 2026 SONGKHLA PUB & BAR RESERVATION • Admin Console (HTML Evaluation Package)</p>
+</footer>
+
+<script>
+    function promptMoveTable(currentTable, custName) {
+        const newTable = prompt(`กำลังย้ายโต๊ะสำหรับ: ${custName}\nโต๊ะเดิมคือ: ${currentTable}\nกรุณาระบุเลขโต๊ะใหม่ที่ต้องการย้ายไป (เช่น VIP-03, A-02):`, 'VIP-03');
+        if(newTable) {
+            alert(`✓ ย้ายโต๊ะของ ${custName} จาก ${currentTable} ไปยัง ${newTable} สำเร็จเรียบร้อย!`);
+            location.reload();
+        }
+    }
+
+    function mockReassign() {
+        promptMoveTable('VIP-01', 'คุณสมชาย');
+    }
+
+    function checkinCustomer(tableNum) {
+        alert(`🎉 เช็คอินโต๊ะ ${tableNum} เรียบร้อย! ลูกค้าเดินทางมาถึงร้านตามเวลา`);
+    }
+
+    function toggleMaintenance(tableNum, btn) {
+        if(btn.textContent.includes('ปิด')) {
+            btn.innerHTML = '✓ เปิดให้บริการตามปกติ';
+            btn.className = 'w-full py-1.5 bg-yellow-950/60 text-yellow-300 rounded-lg text-xs font-semibold';
+            alert(`โต๊ะ ${tableNum} ถูกปรับเป็นสถานะ "ปิดซ่อมบำรุงชั่วคราว" ลูกค้าจะไม่สามารถจองได้`);
+        } else {
+            btn.innerHTML = '🛠️ ปิดปรับปรุงชั่วคราว';
+            btn.className = 'w-full py-1.5 bg-gray-800 text-gray-400 rounded-lg text-xs font-semibold';
+            alert(`โต๊ะ ${tableNum} เปิดให้บริการตามปกติแล้ว`);
+        }
+    }
+
+    function viewSlipMock() {
+        alert('📷 เปิดดูหลักฐานสลิปโอนเงิน PromptPay:\nจำนวนเงิน: 499.00 บาท\nเวลาโอน: 18:32 น.\nสถานะ: ยอดเงินเข้าบัญชีถูกต้องสมบูรณ์');
+    }
+
+    function triggerCutoffMock() {
+        alert('⚡ รันระบบตัดรอบ 20:00 น. สำเร็จ!\nตรวจสอบแล้ว: ปัจจุบันยังไม่เกินเวลา 20:00 น. โต๊ะของลูกค้ายังคงได้รับการสงวนสิทธิ์');
+    }
+</script>
+</body>
+</html>
