@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SONGKHLA PUB - ระบบจองโต๊ะผับบาร์สงขลา (GitHub Showcase)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            light: '#f7e096',
+                            DEFAULT: '#d4af37',
+                            dark: '#997819'
+                        },
+                        night: {
+                            900: '#090a0f',
+                            800: '#13151d',
+                            700: '#1b1d28',
+                            600: '#262938'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Kanit Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-night-900 text-gray-200 min-h-screen flex flex-col">
+
+<!-- Top Warning Banner -->
+<div class="bg-gradient-to-r from-red-950/90 via-black to-red-950/90 border-b border-red-800/40 text-xs py-2 px-4 text-center text-red-200 flex items-center justify-center gap-2">
+    <i class="fa-solid fa-clock text-yellow-400"></i>
+    <span><strong>กติกาการจอง:</strong> ต้องเช็คอินที่ร้านก่อน <strong>20:00 น.</strong> หากเกินเวลาระบบจะตัดสิทธิ์และยกเลิกโต๊ะอัตโนมัติ</span>
+</div>
+
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 bg-night-900/90 backdrop-blur-md border-b border-gold/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-gold/30 to-yellow-900/40 flex items-center justify-center border border-gold/50 shadow-lg">
+                    <i class="fa-solid fa-champagne-glasses text-gold text-xl"></i>
+                </div>
+                <div>
+                    <div class="text-xl font-bold tracking-wider text-gold-gradient">SONGKHLA PUB</div>
+                    <div class="text-[10px] text-gray-400 tracking-widest uppercase">Table Reservation • เมืองสงขลา</div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <span class="hidden sm:inline-block px-3 py-1 bg-yellow-950/60 border border-gold/40 text-yellow-400 text-xs rounded-full font-semibold">
+                    ⭐ PHP + MySQL Project (GitHub)
+                </span>
+                <a href="https://github.com/Boomkung9172/Nockout" target="_blank" class="btn-gold px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-lg">
+                    <i class="fa-brands fa-github text-sm"></i> ดู Source Code บน GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section: AI Promotion Slider -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-10">
+    <div class="slider-container border border-gold/40 relative group">
+        <!-- Slide 1: Chang Beer Promo 199.- -->
+        <div class="slide-item active relative h-[380px] sm:h-[480px] bg-black">
+            <img src="assets/images/promotions/chang.jpg" alt="โปรโมชั่นเบียร์ช้าง 199.-" class="w-full h-full object-cover opacity-85">
+            <div class="absolute inset-0 bg-gradient-to-t from-night-900 via-night-900/40 to-transparent flex items-end p-6 sm:p-12">
+                <div class="max-w-2xl">
+                    <span class="inline-block px-3 py-1 bg-yellow-500 text-black text-xs font-bold rounded-full uppercase tracking-wider mb-3">
+                        🔥 โปรโมชั่นยอดฮิต ชนแก้วสุดคุ้ม
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-2 leading-tight">
+                        เบียร์ช้าง 3 ขวด + น้ำแข็งถังใหญ่
+                    </h2>
+                    <p class="text-gray-300 text-sm sm:text-base mb-4 font-light">
+                        เสิร์ฟเย็นฉ่ำทันทีเมื่อถึงโต๊ะ คุ้มที่สุดในเมืองสงขลา เพียง <span class="text-3xl font-extrabold text-yellow-400">199.-</span> เท่านั้น
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="#bars" class="btn-gold px-6 py-3 rounded-xl text-sm font-semibold flex items-center gap-2 shadow-xl">
+                            <i class="fa-solid fa-chair"></i> เลือกจองโต๊ะเลย
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: SangSom Promo 599.- -->
+        <div class="slide-item relative h-[380px] sm:h-[480px] bg-black">
+            <img src="assets/images/promotions/sangsom.jpg" alt="โปรโมชั่นแสงโสม 599.-" class="w-full h-full object-cover opacity-85">
+            <div class="absolute inset-0 bg-gradient-to-t from-night-900 via-night-900/40 to-transparent flex items-end p-6 sm:p-12">
+                <div class="max-w-2xl">
+                    <span class="inline-block px-3 py-1 bg-gradient-to-r from-amber-500 to-yellow-400 text-black text-xs font-bold rounded-full uppercase tracking-wider mb-3">
+                        ⭐ เซ็ตเปิดโต๊ะ VIP สุดคุ้ม
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-2 leading-tight">
+                        แสงโสม 1 ลิตร + มิกเซอร์ 4 ขวด + น้ำแข็งถังใหญ่
+                    </h2>
+                    <p class="text-gray-300 text-sm sm:text-base mb-4 font-light">
+                        เลือกมิกเซอร์โค้ก หรือสไปร์ทได้ 4 ขวด จัดเต็มแก๊งเพื่อนสายดื่ม เพียง <span class="text-3xl font-extrabold text-yellow-400">599.-</span> เท่านั้น
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="#bars" class="btn-gold px-6 py-3 rounded-xl text-sm font-semibold flex items-center gap-2 shadow-xl">
+                            <i class="fa-solid fa-chair"></i> เลือกจองโต๊ะเลย
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <button id="prevSlide" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-gold/40 text-gold flex items-center justify-center hover:bg-gold hover:text-black">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button id="nextSlide" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 border border-gold/40 text-gold flex items-center justify-center hover:bg-gold hover:text-black">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+</section>
+
+<!-- Pubs & Bars Selection Grid -->
+<section id="bars" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+    <div class="text-center max-w-2xl mx-auto mb-8">
+        <div class="inline-flex items-center gap-2 text-xs font-semibold text-gold uppercase tracking-widest mb-1">
+            <i class="fa-solid fa-location-crosshairs"></i> อำเภอเมืองสงขลา
+        </div>
+        <h2 class="text-3xl font-extrabold text-white">เลือกร้านที่จะจองโต๊ะ <span class="text-gold-gradient">ผับ & บาร์</span></h2>
+        <p class="text-gray-400 text-xs sm:text-sm mt-1">จองโต๊ะและเช็คอินได้ไม่เกิน 20:00 น. ระบบจะตัดว่าลูกค้าไม่ได้มาตามเวลา</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Bar 1: Nockout Pub -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-gold/40 shadow-xl">
+            <div class="h-64 relative bg-black">
+                <img src="assets/images/bars/nockout.jpg" alt="Nockout Pub" class="w-full h-full object-cover">
+                <span class="absolute top-4 left-4 bg-black/80 text-gold border border-gold/40 text-xs px-3 py-1 rounded-full font-semibold">
+                    📍 ถ.ไทรบุรี เมืองสงขลา
+                </span>
+                <span class="absolute top-4 right-4 bg-green-950/90 text-green-300 border border-green-500/60 text-xs px-3 py-1 rounded-full font-semibold">
+                    ● เปิดรับจองถึง 20:00 น.
+                </span>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-white mb-2">Nockout Pub & Music Bar</h3>
+                <p class="text-xs text-gray-400 mb-4">ผับสุดมันส์ใจกลางเมืองสงขลา ดนตรีสดคุณภาพ แสงสีเสียงจัดเต็ม อาหารและเครื่องดื่มครบครัน</p>
+                <div class="flex items-center justify-between pt-3 border-t border-gray-800 text-xs">
+                    <span class="text-yellow-400 font-bold"><i class="fa-solid fa-clock mr-1"></i> ปิดรับจอง 20:00 น.</span>
+                    <span class="text-gray-400">ปิดบริการ 02:00 น.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bar 2: Fullmoon Club -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-gold/40 shadow-xl">
+            <div class="h-64 relative bg-black">
+                <img src="assets/images/bars/fullmoon.jpg" alt="Fullmoon Club" class="w-full h-full object-cover">
+                <span class="absolute top-4 left-4 bg-black/80 text-gold border border-gold/40 text-xs px-3 py-1 rounded-full font-semibold">
+                    📍 เลียบหาดชลาทัศน์ เมืองสงขลา
+                </span>
+                <span class="absolute top-4 right-4 bg-green-950/90 text-green-300 border border-green-500/60 text-xs px-3 py-1 rounded-full font-semibold">
+                    ● เปิดรับจองถึง 20:00 น.
+                </span>
+            </div>
+            <div class="p-6">
+                <h3 class="text-2xl font-bold text-white mb-2">Fullmoon Club Songkhla</h3>
+                <p class="text-xs text-gray-400 mb-4">คลับพรีเมียมริมทะเลสงขลา ปาร์ตี้สุดเอ็กซ์คลูซีฟ DJ ระดับประเทศ และโซน VIP สุดหรู</p>
+                <div class="flex items-center justify-between pt-3 border-t border-gray-800 text-xs">
+                    <span class="text-yellow-400 font-bold"><i class="fa-solid fa-clock mr-1"></i> ปิดรับจอง 20:00 น.</span>
+                    <span class="text-gray-400">ปิดบริการ 02:00 น.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visual Table Seating Map Demo -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+    <div class="glass-card p-6 sm:p-8 rounded-3xl border border-gold/40">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+            <div>
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-chair text-gold"></i> ผังโต๊ะจำลอง (Interactive Table Map)
+                </h3>
+                <p class="text-xs text-gray-400 mt-1">แสดงสถานะโต๊ะว่าง (สีทอง) และโต๊ะที่ติดจองแล้ว (สีแดง) แบบเรียลไทม์</p>
+            </div>
+            <div class="flex items-center gap-3 text-xs">
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-night-800 border border-gold"></span> โต๊ะว่าง</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-red-950 border border-red-500"></span> จองแล้ว</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 text-center">
+            <div class="seat-box seat-available"><div class="font-bold text-gold text-xs">VIP-01</div><div class="text-[10px] text-gray-400">6 ที่นั่ง</div></div>
+            <div class="seat-box seat-booked"><div class="font-bold text-red-400 text-xs">VIP-02</div><div class="text-[10px] text-gray-400">จองแล้ว</div></div>
+            <div class="seat-box seat-available"><div class="font-bold text-gold text-xs">S-01</div><div class="text-[10px] text-gray-400">หน้าเวที</div></div>
+            <div class="seat-box seat-available"><div class="font-bold text-gold text-xs">S-02</div><div class="text-[10px] text-gray-400">หน้าเวที</div></div>
+            <div class="seat-box seat-booked"><div class="font-bold text-red-400 text-xs">A-01</div><div class="text-[10px] text-gray-400">จองแล้ว</div></div>
+            <div class="seat-box seat-available"><div class="font-bold text-gold text-xs">OUT-01</div><div class="text-[10px] text-gray-400">ระเบียงชิล</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Deployment Guide & System Information Banner -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+    <div class="bg-gradient-to-r from-yellow-950/40 via-night-800 to-yellow-950/40 border-2 border-gold/50 rounded-3xl p-6 sm:p-8">
+        <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-server text-gold"></i> ข้อมูลโปรเจกต์ PHP + MySQL แบบสมบูรณ์
+        </h3>
+        <p class="text-xs text-gray-300 mb-4 leading-relaxed">
+            GitHub Pages รองรับเฉพาะไฟล์ Static HTML/CSS หน้านี้จึงเป็นหน้าแสดงผลเบื้องต้น (Showcase Demo) 
+            ส่วนระบบเต็มรูปแบบที่เป็น **PHP + MySQL + ระบบแอดมิน + ฐานข้อมูล** บันทึกอยู่ในไฟล์โครงการทั้งหมดแล้ว สามารถเปิดใช้งานบน XAMPP ได้ทันที
+        </p>
+        <div class="bg-night-900/90 p-4 rounded-xl border border-gray-800 text-xs space-y-2 font-mono text-gray-300">
+            <div>👑 <strong class="text-white">Admin Account:</strong> 674295003@parichat.skru.ac.th | รหัสผ่าน: 1234</div>
+            <div>👤 <strong class="text-white">User Account:</strong> user@gmail.com | รหัสผ่าน: 1234</div>
+            <div>🗄️ <strong class="text-white">Database Script:</strong> database/schema.sql</div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="mt-auto bg-[#07080b] border-t border-gold/20 py-8 text-center text-xs text-gray-500">
+    <p>© 2026 SONGKHLA NIGHTLIFE PUB & BAR RESERVATION • Black & Gold Edition</p>
+</footer>
+
+<script>
+    // Simple Slider
+    const slides = document.querySelectorAll('.slide-item');
+    let idx = 0;
+    function show(n) {
+        slides.forEach((s, i) => s.classList.toggle('active', i === n));
+        idx = n;
+    }
+    document.getElementById('nextSlide')?.addEventListener('click', () => show((idx + 1) % slides.length));
+    document.getElementById('prevSlide')?.addEventListener('click', () => show((idx - 1 + slides.length) % slides.length));
+    setInterval(() => show((idx + 1) % slides.length), 5000);
+</script>
+</body>
+</html>
