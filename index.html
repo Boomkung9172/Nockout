@@ -32,7 +32,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Self-Contained Bulletproof CSS (ไม่พึ่งพาไฟล์ภายนอก) -->
+    <!-- Self-Contained Bulletproof CSS -->
     <style>
         :root {
             --gold-gradient: linear-gradient(135deg, #f7e096 0%, #d4af37 50%, #997819 100%);
@@ -197,10 +197,10 @@
             </div>
 
             <!-- Slider Controls -->
-            <button id="prevSlide" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 border border-[#d4af37]/40 text-[#d4af37] flex items-center justify-center hover:bg-[#d4af37] hover:text-black transition-all">
+            <button id="prevSlide" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 border border-[#d4af37]/40 text-[#d4af37] flex items-center justify-center hover:bg-[#d4af37] hover:text-black transition-all z-10">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
-            <button id="nextSlide" class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 border border-[#d4af37]/40 text-[#d4af37] flex items-center justify-center hover:bg-[#d4af37] hover:text-black transition-all">
+            <button id="nextSlide" class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 border border-[#d4af37]/40 text-[#d4af37] flex items-center justify-center hover:bg-[#d4af37] hover:text-black transition-all z-10">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
         </div>
@@ -239,7 +239,7 @@
         </div>
     </section>
 
-    <!-- Pubs & Bars Selection Grid (กรอบสี่เหลี่ยม เลือกร้านในเมืองสงขลา) -->
+    <!-- Pubs & Bars Selection Grid -->
     <section id="bars" class="space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
             <div>
@@ -319,7 +319,7 @@
         </div>
     </section>
 
-    <!-- Visual Table Seating Map Demo (ผังแสดงโต๊ะว่าง / ติดจอง) -->
+    <!-- Visual Table Seating Map Demo -->
     <section id="tableMapSection" class="glass-card p-6 sm:p-8 rounded-3xl border border-[#d4af37]/40 shadow-2xl">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 border-b border-gray-800 pb-4">
             <div>
@@ -328,9 +328,9 @@
                 </h3>
                 <p class="text-xs text-gray-400 mt-1">คลิกเลือกโต๊ะว่าง (สีทอง) เพื่อทดลองจำลองระบบการจอง</p>
             </div>
-            <div class="flex items-center gap-4 text-xs">
-                <span class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-[#13151d] border border-[#d4af37]"></span> โต๊ะว่าง</span>
-                <span class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-[#1a0f12] border border-red-500"></span> จองแล้ว</span>
+            <div class="flex items-center gap-4 text-xs font-semibold">
+                <span class="flex items-center gap-1.5 text-yellow-400"><span class="w-3 h-3 rounded bg-yellow-500/30 border border-yellow-500"></span> โต๊ะว่าง</span>
+                <span class="flex items-center gap-1.5 text-red-400"><span class="w-3 h-3 rounded bg-red-950/60 border border-red-500"></span> มีผู้จองแล้ว</span>
             </div>
         </div>
 
