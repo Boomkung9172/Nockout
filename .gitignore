@@ -1,9 +1,0 @@
-# Ignore temporary files
-*.tmp
-*.log
-.DS_Store
-Thumbs.db
-
-# Ignore slip uploads (keep folder structure)
-uploads/slips/*
-!uploads/slips/.gitkeep
